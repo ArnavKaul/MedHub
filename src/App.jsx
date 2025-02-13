@@ -1,52 +1,29 @@
+// import { StrictMode } from 'react'
+// import { createRoot } from 'react-dom/client'
+// import './index.css'
+// import App from './App.jsx'
+
+// createRoot(document.getElementById('root')).render(
+//   <StrictMode>
+//     <App />
+//   </StrictMode>,
+// )
 import React from "react";
-import { ShoppingCart, UserCircle } from "lucide-react";
-import "./App.css";
+import ReactDOM from "react-dom/client";
+import Homepage from "./homepage";
+import "./common/index.css";
+import Login from "./login";
+import Signup from "./signup";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { Home } from "lucide-react";
 
-const MedHubHome = () => {
-	return (
-		<div className="container">
-			<nav className="navbar">
-				<img src="/logo.png" alt="MedHub Logo" className="logo" />
-
-				<div className="search-container">
-					<input
-						type="text"
-						placeholder="Search for medicines..."
-						className="search-bar"
-					/>
-				</div>
-				<div className="icons">
-					<ShoppingCart className="icon" />
-					<UserCircle className="icon" />
-				</div>
-			</nav>
-
-			<div className="offers-section">
-				<img
-					src="/offers-banner.jpg"
-					alt="Exclusive Medical Offers"
-					className="offers-banner"
-				/>
-			</div>
-
-			<div className="categories">
-				<h2>Shop by Category</h2>
-				<div className="category-grid">
-					{["Medicines", "Wellness", "Medical Devices", "Personal Care"].map(
-						(category, index) => (
-							<div key={index} className="category-card">
-								{category}
-							</div>
-						)
-					)}
-				</div>
-			</div>
-
-			<footer className="footer">
-				<p>&copy; 2025 MedHub. All rights reserved.</p>
-			</footer>
-		</div>
-	);
-};
-
-export default MedHubHome;
+ReactDOM.createRoot(document.getElementById("root")).render(
+		<Router>
+		<Routes>
+		<Route path="/home" element={<Homepage />} />
+		<Route path="/signup" element={<Signup />} />
+		<Route path="/login" element={<Login />} />
+		
+	</Routes>
+	</Router>
+);
