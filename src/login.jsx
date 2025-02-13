@@ -17,15 +17,37 @@ const Login = () => {
     setPwdErr(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (!email.includes("@")) {
       setEmailErr(true);
+      return;
     }
     if (password.length < 6) {
       setPwdErr(true);
+      return;
+    }
+  
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      const data = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(data.message || "Login failed");
+      }
+  
+      alert("Login successful!");
+    } catch (error) {
+      alert(error.message);
     }
   };
+  
 
   return (
     <div className="login-container">
