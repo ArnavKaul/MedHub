@@ -38,13 +38,11 @@
 }
 
 .search-bar {
-	width: 100%;
-	padding: 10px;
+	padding: 8px;
+	width: 300px;
 	border-radius: 5px;
 	border: none;
-	outline: none;
 }
-
 .icons {
 	display: flex;
 	gap: 15px;
