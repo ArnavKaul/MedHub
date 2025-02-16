@@ -14,16 +14,16 @@ import Homepage from "./homepage";
 import "./common/index.css";
 import Login from "./login";
 import Signup from "./signup";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "lucide-react";
-
+import MedicinesPage from "./MedicinesPage";
 ReactDOM.createRoot(document.getElementById("root")).render(
-		<Router>
+	<Router>
 		<Routes>
-		<Route path="/home" element={<Homepage />} />
-		<Route path="/signup" element={<Signup />} />
-		<Route path="/login" element={<Login />} />
-		
-	</Routes>
+			<Route path="/home" element={<Homepage />} />
+			<Route path="/signup" element={<Signup />} />
+			<Route path="/login" element={<Login />} />
+			<Route path="/medicines" element={<MedicinesPage />} />
+		</Routes>
 	</Router>
 );
