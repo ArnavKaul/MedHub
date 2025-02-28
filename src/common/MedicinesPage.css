@@ -95,3 +95,67 @@ body {
 	color: #ff4d4d;
 	padding: 20px;
 }
+.content {
+	display: flex;
+	gap: 20px;
+}
+
+.filter-toggle {
+	background-color: #007bff;
+	color: white;
+	padding: 10px;
+	border: none;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+.filter-sidebar h3 {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #333;
+}
+
+.filter-sidebar label {
+	display: block;
+	font-size: 1em;
+	color: #333;
+	padding: 5px 0;
+	cursor: pointer;
+}
+
+.filter-sidebar label input {
+	margin-right: 8px;
+}
+
+.filter-sidebar select {
+	width: 100%;
+	padding: 5px;
+	font-size: 1em;
+	margin-top: 5px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	color: #333;
+}
+
+.medicine-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	flex-grow: 1;
+}
+
+.medicine-card {
+	border: 1px solid #ddd;
+	padding: 15px;
+	text-align: center;
+}
+
+.medicine-image {
+	width: 100px;
+	height: 100px;
+}
+
+.medicine-price {
+	font-weight: bold;
+	color: #007bff;
+}
