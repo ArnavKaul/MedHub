@@ -8,129 +8,199 @@ const wellnessProducts = [
 	{
 		id: 1,
 		name: "Multivitamins",
-		description: "Daily nutritional supplements",
-		price: "$15",
+		category: "Supplements",
+		price: 15,
+		rating: 4.9,
+		reviews: 200,
 		image: "/images/Multivitamins.jpeg",
 	},
 	{
 		id: 2,
 		name: "Omega-3 Fish Oil",
-		description: "Supports heart and brain health",
-		price: "$20",
+		category: "Heart Health",
+		price: 20,
+		rating: 4.8,
+		reviews: 180,
 		image: "/images/Omega-3 Fish Oil.jpeg",
 	},
 	{
 		id: 3,
 		name: "Vitamin C Tablets",
-		description: "Boosts immunity and skin health",
-		price: "$12",
+		category: "Immunity Boosters",
+		price: 12,
+		rating: 4.7,
+		reviews: 150,
 		image: "/images/Vitamin C Tablets.jpeg",
 	},
 	{
 		id: 4,
 		name: "Protein Powder",
-		description: "For muscle recovery and strength",
-		price: "$30",
+		category: "Fitness",
+		price: 30,
+		rating: 4.6,
+		reviews: 250,
 		image: "/images/proteinpowder.jpeg",
 	},
 	{
 		id: 5,
 		name: "Probiotics",
-		description: "Improves gut health and digestion",
-		price: "$18",
+		category: "Digestive Health",
+		price: 18,
+		rating: 4.8,
+		reviews: 220,
 		image: "/images/Probiotics.jpeg",
 	},
 	{
 		id: 6,
 		name: "Herbal Green Tea",
-		description: "Helps in detox and weight loss",
-		price: "$10",
+		category: "Weight Management",
+		price: 10,
+		rating: 4.5,
+		reviews: 190,
 		image: "/images/Herbal Green Tea.jpeg",
 	},
 	{
 		id: 7,
 		name: "Melatonin Tablets",
-		description: "Supports better sleep cycles",
-		price: "$14",
+		category: "Sleep Aid",
+		price: 14,
+		rating: 4.7,
+		reviews: 130,
 		image: "/images/Melatonin Tablets.jpeg",
 	},
 	{
 		id: 8,
 		name: "Collagen Powder",
-		description: "Promotes skin elasticity and joint health",
-		price: "$25",
+		category: "Skin Health",
+		price: 25,
+		rating: 4.9,
+		reviews: 300,
 		image: "/images/Collagen Powder.jpeg",
 	},
 	{
 		id: 9,
-		name: "Magnesium Supplements",
-		description: "Reduces stress and muscle cramps",
-		price: "$16",
+		name: "Mg Supplements",
+		category: "Stress Relief",
+		price: 16,
+		rating: 4.6,
+		reviews: 140,
 		image: "/images/Magnesium Tablets.jpeg",
 	},
 	{
 		id: 10,
-		name: "Apple Cider Vinegar Gummies",
-		description: "Supports digestion and metabolism",
-		price: "$13",
+		name: "ACV Gummies",
+		category: "Weight Management",
+		price: 13,
+		rating: 4.7,
+		reviews: 110,
 		image: "/images/Apple Cider Vinegar Gummies.jpeg",
 	},
 	{
 		id: 11,
-		name: "Ashwagandha Capsules",
-		description: "Helps reduce stress and anxiety",
-		price: "$19",
+		name: "ASG Capsules",
+		category: "Stress Relief",
+		price: 19,
+		rating: 4.8,
+		reviews: 160,
 		image: "/images/Ashwagandha Capsules.jpeg",
 	},
 	{
 		id: 12,
 		name: "Electrolyte Drinks",
-		description: "Replenishes hydration and energy",
-		price: "$8",
+		category: "Fitness",
+		price: 8,
+		rating: 4.5,
+		reviews: 100,
 		image: "/images/Electrolyte Drinks.jpeg",
 	},
 ];
 
+const categories = [
+	"All",
+	"Supplements",
+	"Heart Health",
+	"Immunity Boosters",
+	"Fitness",
+	"Digestive Health",
+	"Weight Management",
+	"Sleep Aid",
+	"Skin Health",
+	"Stress Relief",
+];
+
 const Wellness = () => {
-	const [searchItem, setSearchItem] = useState("");
-	const [filteredItems, setFilteredItems] = useState(wellnessProducts);
+	const [showFilters, setShowFilters] = useState(false);
+	const [selectedCategory, setSelectedCategory] = useState("All");
+	const [sortBy, setSortBy] = useState("Highest Rating");
 
-	const handleInputChange = (e) => {
-		const searchTerm = e.target.value;
-		setSearchItem(searchTerm);
-
-		const filtered = wellnessProducts.filter((item) =>
-			item.name.toLowerCase().includes(searchTerm.toLowerCase())
-		);
-		setFilteredItems(filtered);
-	};
+	const filteredItems = wellnessProducts
+		.filter(
+			(product) =>
+				selectedCategory === "All" || product.category === selectedCategory
+		)
+		.sort((a, b) => {
+			if (sortBy === "Highest Rating") return b.rating - a.rating;
+			if (sortBy === "Lowest Price") return a.price - b.price;
+			if (sortBy === "Highest Price") return b.price - a.price;
+			return 0;
+		});
 
 	return (
 		<div className="container">
-			<Header searchItem={searchItem} handleInputChange={handleInputChange} />
+			<Header />
 			<h1 className="title">Wellness Products</h1>
-			<div className="medicine-grid">
-				{filteredItems.length > 0 ? (
-					filteredItems.map((item) => (
-						<Link
-							to={`/wellness/${item.id}`}
-							key={item.id}
-							className="medicine-card"
-						>
+
+			<button
+				className="filter-toggle"
+				onClick={() => setShowFilters(!showFilters)}
+			>
+				{showFilters ? "Hide Filters" : "Show Filters"}
+			</button>
+
+			<div className="content">
+				{showFilters && (
+					<div className="filter-sidebar">
+						<h3>Categories</h3>
+						{categories.map((category) => (
+							<label key={category}>
+								<input
+									type="radio"
+									name="category"
+									checked={selectedCategory === category}
+									onChange={() => setSelectedCategory(category)}
+								/>
+								{category}
+							</label>
+						))}
+						<h3>Sort By</h3>
+						<select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+							<option>Highest Rating</option>
+							<option>Lowest Price</option>
+							<option>Highest Price</option>
+						</select>
+					</div>
+				)}
+
+				<div className="medicine-grid">
+					{filteredItems.map((product) => (
+						<div key={product.id} className="medicine-card">
 							<img
-								src={item.image}
-								alt={item.name}
+								src={product.image}
+								alt={product.name}
 								className="medicine-image"
 							/>
-							<h2>{item.name}</h2>
-							<p>{item.description}</p>
-							<p className="medicine-price">{item.price}</p>
-						</Link>
-					))
-				) : (
-					<p className="no-results">No products found.</p>
-				)}
+							<h2>{product.name}</h2>
+							<p>{product.category}</p>
+							<p className="medicine-price">${product.price}</p>
+							<p className="medicine-rating">
+								⭐ {product.rating} | {product.reviews} reviews
+							</p>
+							<button className="add-to-cart">Add to Cart</button>
+						</div>
+					))}
+				</div>
 			</div>
+
 			<Footer />
 		</div>
 	);
