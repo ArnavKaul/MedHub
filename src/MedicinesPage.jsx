@@ -257,6 +257,7 @@ const MedicinesPage = () => {
 							<p className="medicine-rating">
 								⭐ {medicine.rating} | {medicine.reviews} reviews
 							</p>
+							<button className="add-to-cart ">Add to Cart</button>
 						</div>
 					))}
 				</div>
