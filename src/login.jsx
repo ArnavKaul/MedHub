@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./common/login.css"; // Importing separate CSS file
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailErr, setEmailErr] = useState(false);
   const [pwdErr, setPwdErr] = useState(false);
+  const navigate = useNavigate();
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -43,6 +46,7 @@ const Login = () => {
       }
   
       alert("Login successful!");
+      navigate('/home');
     } catch (error) {
       alert(error.message);
     }

@@ -1,9 +1,11 @@
 import React from "react";
 import { ShoppingCart, UserCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import "./common/App.css"; // Ensure CSS is properly linked
+import "./common/App.css"; 
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ searchItem, handleInputChange }) => {
+	const navigate = useNavigate();
 	return (
 		<nav className="navbar">
 			<Link to="/home">
@@ -23,7 +25,7 @@ const Header = ({ searchItem, handleInputChange }) => {
 
 			{/* Icons for Cart and User */}
 			<div className="icons">
-				<ShoppingCart className="icon" />
+				<ShoppingCart className="icon" onClick={() => navigate("/cart")}/>
 
 				<UserCircle className="icon" />
 			</div>

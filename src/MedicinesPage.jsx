@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./common/MedicinesPage.css";
 import Header from "./Header";
 import Footer from "./Footer.jsx";
+import { CartProvider, useCart } from "react-use-cart";
+import { useNavigate } from "react-router-dom";
 
 const medicines = [
 	{
@@ -142,6 +144,50 @@ const MedicinesPage = () => {
 	const [selectedCategory, setSelectedCategory] = useState("");
 	const [sortBy, setSortBy] = useState("rating");
 
+    const { addItem, items, updateItemQuantity, removeItem, cartTotal } = useCart();
+    const navigate=useNavigate()
+  // Add item to cart
+//   const addToCart = (medicine) => {
+//     setCart((prevCart) => {
+//       const existingItem = prevCart.find((item) => item.id === medicine.id);
+//       if (existingItem) {
+//         return prevCart.map((item) =>
+//           item.id === medicine.id ? { ...item, quantity: item.quantity + 1 } : item
+//         );
+//       } else {
+//         return [...prevCart, { ...medicine, quantity: 1 }];
+//       }
+//     });
+//   };
+
+//   // Increase quantity
+//   const increaseQuantity = (id) => {
+//     setCart((prevCart) =>
+//       prevCart.map((item) => (item.id === id ? { ...item, quantity: item.quantity + 1 } : item))
+//     );
+//   };
+
+//   // Decrease quantity (remove if 0)
+//   const decreaseQuantity = (id) => {
+//     setCart((prevCart) =>
+//       prevCart
+//         .map((item) =>
+//           item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+//         )
+//         .filter((item) => item.quantity > 0) // Remove item if quantity reaches 0
+//     );
+//   };
+
+//   // Remove item from cart
+//   const removeFromCart = (id) => {
+//     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+//   };
+
+//   // Calculate total price
+//   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+
+
 	const filteredMedicines = medicines
 		.filter(
 			(medicine) =>
@@ -257,7 +303,12 @@ const MedicinesPage = () => {
 							<p className="medicine-rating">
 								⭐ {medicine.rating} | {medicine.reviews} reviews
 							</p>
-							<button className="add-to-cart ">Add to Cart</button>
+							<button 
+  className="add-to-cart"  
+  onClick={() => {
+    addItem(medicine);  
+    navigate("/cart");   
+  }}>Add to Cart</button>
 						</div>
 					))}
 				</div>
