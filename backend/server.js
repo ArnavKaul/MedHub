@@ -36,4 +36,9 @@ app.get("/debug-users", async (req, res) => {
       res.status(500).json({ message: "Error fetching users", error });
     }
   });
+  app.get('/api/config', (req, res) => {
+    res.json({
+      googleApiKey: process.env.GOOGLE_API_KEY,  // Send env var to frontend via API
+    });
+  });
   

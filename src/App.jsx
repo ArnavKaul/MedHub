@@ -12,6 +12,7 @@ import "./common/index.css";
 import Multivitamins from "./multivitamins";
 import { CartProvider } from "react-use-cart";
 import Cart from "./cart";
+import Chat from "./chat";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<CartProvider>
@@ -26,6 +27,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 	        <Route path="/personal-care" element={<PersonalCare />} /> 
 			<Route path="/multivitamins" element={<Multivitamins/>} />
             <Route path="/cart" element={<Cart />} />
+			<Route path="/chat" element={<Chat />} />
 
 		</Routes>
 	</Router>

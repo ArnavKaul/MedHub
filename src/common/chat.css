@@ -1,0 +1,44 @@
+
+.chat-history{
+    background-color: #fff;
+    width: 1530px;
+     height: 350px;
+    color: black;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;  /* Takes full width */
+  }
+  
+  .chat-input {
+    width: 100%;  
+    padding-right: 100px;  /* Adjust padding to fit the button */
+    height: 50px;  
+    border: 2px solid #ccc;
+    border-radius: 25px;  
+    padding: 0 15px;
+   
+  }
+  
+  #btn-chat {
+    position: absolute;
+    right: 10px;
+    top: 50%;   
+    transform: translateY(-50%);  
+    height: 40px;
+    padding: 0 15px;
+    background-color: #333;  
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100px;  
+  }
+
+  
+  #btn-chat:hover {
+    background-color: #434bb7;  /* Slightly darker on hover */
+  }
+  
