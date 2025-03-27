@@ -154,6 +154,7 @@ body {
 	background: #fff;
 	border-radius: 10px;
 	padding: 15px;
+	line-height: 15px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	height: 350px; /*Set a fixed height */
 }
@@ -199,10 +200,10 @@ body {
 	cursor: pointer;
 }
 .add-to-cart {
-	width: 90%; /* Prevent it from getting too big */
+	width: 80%; /* Prevent it from getting too big */
 	/* Center it */
 	display: inline-block; /* Ensures it takes full available width */
-	padding: 10px;
+
 	background-color: black;
 	color: white;
 	border: none;
