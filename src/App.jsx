@@ -15,7 +15,6 @@ import Cart from "./cart";
 import Chat from "./chat";
 import Checkout from "./checkout";
 
-import Checkout from "./checkout";
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<CartProvider>
 		<Router>

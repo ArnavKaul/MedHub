@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useCart } from "react-use-cart";
+import { useNavigate } from "react-router-dom";
 import "./common/checkout.css";
 import Header from "./Header";
 import Footer from "./Footer.jsx";
 
 const Checkout = () => {
+	const { items, cartTotal, emptyCart } = useCart();
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -11,30 +15,48 @@ const Checkout = () => {
 		address: "",
 		paymentMethod: "COD",
 	});
+	const [errors, setErrors] = useState({});
 
-	// Fetch cart details from local storage or state
-	const [cartItems, setCartItems] = useState([]);
-
-	useEffect(() => {
-		const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-		setCartItems(storedCart);
-	}, []);
-
-	// Calculate total
-	const calculateTotal = () => {
-		return cartItems.reduce(
-			(total, item) => total + item.price * item.quantity,
-			0
-		);
-	};
-
+	// Handle input changes
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
+	// Simple validation function
+	const validateForm = () => {
+		let newErrors = {};
+
+		if (!formData.name.trim()) {
+			newErrors.name = "Name is required";
+		}
+
+		if (
+			!formData.email.trim() ||
+			!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(formData.email)
+		) {
+			newErrors.email = "Enter a valid email address";
+		}
+
+		if (!formData.phone.trim() || !/^\d{10}$/.test(formData.phone)) {
+			newErrors.phone = "Enter a valid 10-digit phone number";
+		}
+
+		if (!formData.address.trim() || formData.address.length < 5) {
+			newErrors.address = "Address must be at least 5 characters";
+		}
+
+		setErrors(newErrors);
+		return Object.keys(newErrors).length === 0;
+	};
+
+	// Handle form submission
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		alert(`Order placed for ${formData.name} at ${formData.address}`);
+		if (validateForm()) {
+			alert(`Order placed for ${formData.name} at ${formData.address}`);
+			emptyCart();
+			navigate("/home");
+		}
 	};
 
 	return (
@@ -54,10 +76,10 @@ const Checkout = () => {
 							onChange={handleChange}
 							required
 						/>
+						{errors.name && <p className="error">{errors.name}</p>}
 						<br />
 
 						<label>Email: </label>
-						<br />
 						<input
 							type="email"
 							name="email"
@@ -65,9 +87,10 @@ const Checkout = () => {
 							onChange={handleChange}
 							required
 						/>
+						{errors.email && <p className="error">{errors.email}</p>}
 						<br />
+
 						<label>Phone: </label>
-						<br />
 						<input
 							type="tel"
 							name="phone"
@@ -75,7 +98,9 @@ const Checkout = () => {
 							onChange={handleChange}
 							required
 						/>
+						{errors.phone && <p className="error">{errors.phone}</p>}
 						<br />
+
 						<label>Shipping Address: </label>
 						<textarea
 							name="address"
@@ -83,7 +108,9 @@ const Checkout = () => {
 							onChange={handleChange}
 							required
 						/>
+						{errors.address && <p className="error">{errors.address}</p>}
 						<br />
+
 						<label>Payment Method</label>
 						<select
 							name="paymentMethod"
@@ -98,11 +125,11 @@ const Checkout = () => {
 					</form>
 				</div>
 
-				{/* Right: Order Summary & Place Order */}
+				{/* Right: Order Summary */}
 				<div className="checkout-summary">
 					<h2>Order Summary</h2>
-					{cartItems.length > 0 ? (
-						cartItems.map((item, index) => (
+					{items.length > 0 ? (
+						items.map((item, index) => (
 							<div className="order-item" key={index}>
 								<p>
 									{item.name} (x{item.quantity}) - ${item.price * item.quantity}
@@ -112,15 +139,16 @@ const Checkout = () => {
 					) : (
 						<p>No items in cart.</p>
 					)}
-					<p>Subtotal: ${calculateTotal()}</p>
+					<p>Subtotal: ${cartTotal}</p>
 					<p>Shipping: $5</p>
 					<hr />
-					<h3>Total: ${calculateTotal() + 5}</h3>
+					<h3>Total: ${cartTotal + 5}</h3>
 					<button type="submit" onClick={handleSubmit}>
 						Place Order
 					</button>
 				</div>
 			</div>
+
 			<footer>
 				<Footer />
 			</footer>
