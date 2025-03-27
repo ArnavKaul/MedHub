@@ -1,38 +1,76 @@
-.cart-img
-{
-    padding-top: 50px;
+.cart-img {
+	padding-top: 50px;
 }
-.cart-p{
-    color:black;
-    width: 700px;
-    padding: 15px;
-}
-.cart-h1{
-    color:#0077cc;
-    margin-top: 100px;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-}
-.cart-h3{
-    color:black;
-    
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    font-size: large;
-    font-weight: bold;
-}
-#btn-cart{
-    width: 17%;
-    margin: 15px;
-}
-.cart-h2{
-    color:black;
-    font-size:large;
-    font-weight: bold;
-    padding-top: 10px;
-    padding-bottom:10px;
-    margin-right: 550px;
 
+.cart-p {
+	color: black;
+	width: 700px;
+	padding: 15px;
+}
+
+.cart-h1 {
+	color: black;
+	margin-top: 100px;
+	padding: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+.cart-h3 {
+	color: black;
+	padding: 10px;
+	text-align: center;
+	width: 100%;
+	font-size: large;
+	font-weight: bold;
+}
+
+.cart-h2 {
+	color: black;
+	font-size: large;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-right: 550px;
+}
+
+.cart-buttons {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+/* Cart Buttons */
+#btn-cart {
+	width: 17%;
+	margin: 15px;
+	padding: 10px;
+	font-size: 16px;
+	background-color: black;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+#btn-cart:hover {
+	background-color: black;
+}
+
+/* Checkout Button */
+#btn-checkout {
+	background-color: black; /* Green button */
+	color: white;
+	font-weight: bold;
+	padding: 12px 20px;
+	font-size: 18px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+#btn-checkout:hover {
+	background-color: #218838;
 }
