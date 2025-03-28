@@ -166,10 +166,6 @@ body {
 	margin-bottom: 5px;
 }
 
-.medicine-card p {
-	min-height: 50px; /* Ensures uniform description spacing */
-}
-
 .medicine-image {
 	width: 100px;
 	height: 100px;

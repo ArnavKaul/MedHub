@@ -1,12 +1,13 @@
-.receipt-h2{
-  color:black;
+.receipt-h2 {
+	color: black;
 }
-.receipt-p{
-   color:black;
+.receipt-p {
+	color: black;
 }
-.receipt-total{
-    color:black;
+.receipt-total {
+	color: black;
 }
-.receipt-h1{
-    color:black;
+.receipt-h1 {
+	color: black;
+	margin-top: 200px;
 }

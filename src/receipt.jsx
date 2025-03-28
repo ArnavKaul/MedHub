@@ -1,21 +1,21 @@
-import React,{ useEffect }  from "react";
+import React, { useEffect } from "react";
 import { useCart } from "react-use-cart";
-import "./common/cart.css";  
-import "./common/receipt.css"; 
+import "./common/cart.css";
+import "./common/receipt.css";
 import Header from "./Header";
 import Footer from "./Footer.jsx";
 import { useNavigate } from "react-router-dom";
 
 const Receipt = () => {
-    const navigate=useNavigate()
+	const navigate = useNavigate();
 	const { items, cartTotal } = useCart();
-    useEffect(() => {
-    const timer = setTimeout(() => {
-        navigate('/home');
-      }, 5000);
-  
-      return () => clearTimeout(timer); // Clean up the timer on component unmount
-    }, [navigate]);
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			navigate("/home");
+		}, 5000);
+
+		return () => clearTimeout(timer); // Clean up the timer on component unmount
+	}, [navigate]);
 
 	return (
 		<div className="container">
@@ -43,7 +43,7 @@ const Receipt = () => {
 					</ul>
 					<h2 className="receipt-total">Total: ${cartTotal}</h2>
 
-                    <h2 className="receipt-total">THANK YOU FOR YOUR PAYMENT :)</h2>
+					<h2 className="receipt-total">THANK YOU FOR YOUR PAYMENT :)</h2>
 				</div>
 			)}
 

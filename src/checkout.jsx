@@ -72,13 +72,12 @@ const Checkout = () => {
 				`Order placed for ${formData.name} at ${formData.address}\nLocation: ${location[0]}, ${location[1]}`
 			);
 			// emptyCart();
-			navigate("/payment",{ state: { totalAmount: cartTotal + 5 }});
+			navigate("/payment", { state: { totalAmount: cartTotal + 5 } });
 		}
 	};
 
 	return (
 		<div className="checkout-container">
-			<h2 className="head">Billing & Shipping Details</h2>
 			<Header />
 			<h2 className="head">Billing & Shipping Details</h2>
 			<div className="checkout-content">
