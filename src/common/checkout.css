@@ -40,6 +40,7 @@
 .checkout-summary h2 {
 	font-size: 22px;
 	margin-bottom: 15px;
+
 	color: #000;
 }
 
@@ -106,7 +107,7 @@ select {
 	margin-top: auto;
 }
 h2 {
-	padding-top: 30px;
+	padding-top: 100px;
 	color: #000;
 	text-align: center;
 }

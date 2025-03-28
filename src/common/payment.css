@@ -1,154 +1,158 @@
-@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
-*{
-    margin: 0%;
-    padding: 0%;
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
+* {
+	margin: 0%;
+	padding: 0%;
 }
 
-html{
-    background: linear-gradient(180deg, #1a1a1a 0%, rgb(0, 0, 0) 100%) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    overflow-x: hidden;
-    overflow-y: scroll;
+html {
+	background: linear-gradient(180deg, #1a1a1a 0%, rgb(0, 0, 0) 100%) no-repeat
+		center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	overflow-x: hidden;
+	overflow-y: scroll;
 }
 
 html,
-body{
-    font-family: "Jersey 10", sans-serif;
-    display: flex;
-    justify-content: center;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+body {
+	font-family: "calibri";
+
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
 }
 
-body{
-    padding: 2em;
+body {
+	padding: 2em;
 }
 
-.payBox{
-    margin: 2em;
-    text-align: center;
+.payBox {
+	background-color: white;
+	text-align: center;
+	margin-left: 450px;
 }
-.payBox > .title{
-    color:#0074d9;
-
-}
-
-.payBox > .title > h1{
-    font-weight: 400;
-    font-size: 5em;
-    transition: 0.3s;
+.payBox > .title {
+	color: #0074d9;
 }
 
-.payBox > .title > h1:hover{
-    font-weight: 400;
-    font-size: 6em;
+.payBox > .title > h1 {
+	font-weight: 400;
+	font-size: 5em;
+	transition: 0.3s;
 }
 
-.payBox > .title > i{
-    color: blue;
+.payBox > .title > h1:hover {
+	font-weight: 400;
+	font-size: 6em;
 }
 
-.payBox > .title > i > a{
-    color: rgb(255, 255, 255);
-    transition: 0.3s;
+.payBox > .title > i {
+	color: blue;
 }
 
-.payBox > .title > i > a:hover{
-    color: rgb(255, 110, 151);
+.payBox > .title > i > a {
+	color: rgb(255, 255, 255);
+	transition: 0.3s;
 }
 
-.payBox > .title > i > a:hover{
-    font-size: 2em;
+.payBox > .title > i > a:hover {
+	color: rgb(255, 110, 151);
 }
 
-.payBox > .title > i > a:visited{
-    color: rgb(222,49,99);
+.payBox > .title > i > a:hover {
+	font-size: 2em;
+}
+
+.payBox > .title > i > a:visited {
+	color: rgb(222, 49, 99);
 }
 
 .payBox > .qr {
-    padding: 3em;
+	padding: 3em;
 }
 
 .payBox > .qr > img {
-    width: 400px;
-    transition: 0.3s;
+	width: 400px;
+	transition: 0.3s;
 }
 
 .payBox > .qr > img:hover {
-    width: 420px;
+	width: 420px;
 }
 
-
 .payBox > .details {
-    padding: 0em 1.6em;
-    color: white;
+	padding: 0em 1.6em;
+	color: black;
 }
 
 .payBox > .details > i > span {
-    color: #0074d9;
+	color: #0074d9;
 }
 
 .payBox > .details > i > span > b {
-    color: rgb(222,49,99);
-    transition: 0.3s;
+	color: rgb(222, 49, 99);
+	transition: 0.3s;
 }
 
 .payBox > .details > i > span > b:hover {
-    font-size: 2em;
+	font-size: 2em;
 }
 
-.payBox > .button{
-    margin-top: 3em;
-    display: flex;
-    justify-content: center;
+.payBox > .button {
+	margin-top: 3em;
+	display: flex;
+	justify-content: center;
 }
 
-.payBox > .button > div{
-    border-radius: 15px;
-    color: white;
-    width: 10em;
-    padding: 1em;
-    background: black;
-    transition: 0.3s;
+.payBox > .button > div {
+	border-radius: 15px;
+	color: white;
+	width: 10em;
+	padding: 1em;
+	background: black;
+	transition: 0.3s;
 }
 
-.payBox > .button > div:hover{
-    padding: 1.2em;
-    background: linear-gradient(180deg, rgb(250, 121, 157) 0%, rgb(222,49,99) 100%);
+.payBox > .button > div:hover {
+	padding: 1.2em;
+	background: linear-gradient(
+		180deg,
+		rgb(250, 121, 157) 0%,
+		rgb(222, 49, 99) 100%
+	);
 }
 
 .payBox > .footer {
-    margin-top:2em;
-    color: white;
+	margin-top: 2em;
+	color: white;
 }
 
 .payBox > .footer > i {
-    color: white;
+	color: white;
 }
 
 .payBox > .footer > i > b {
-    color: rgb(222,49,99);
-    transition: 0.3s;
+	color: rgb(222, 49, 99);
+	transition: 0.3s;
 }
 
 .payBox > .footer > i > b:hover {
-    font-size: 2em;
+	font-size: 2em;
 }
 
 @media only screen and (max-width: 768px) {
-    html,body{
-        overflow: hidden;
-    }
-    .payBox > .qr > img {
-        width: 300px;
-        transition: 0.3s;
-    }
+	html,
+	body {
+		overflow: hidden;
+	}
+	.payBox > .qr > img {
+		width: 300px;
+		transition: 0.3s;
+	}
 
-    .payBox > .qr > img:hover {
-        width: 320px;
-    }
+	.payBox > .qr > img:hover {
+		width: 320px;
+	}
 }
