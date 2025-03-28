@@ -71,8 +71,8 @@ const Checkout = () => {
 			alert(
 				`Order placed for ${formData.name} at ${formData.address}\nLocation: ${location[0]}, ${location[1]}`
 			);
-			emptyCart();
-			navigate("/home");
+			// emptyCart();
+			navigate("/payment",{ state: { totalAmount: cartTotal + 5 }});
 		}
 	};
 

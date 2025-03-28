@@ -1,5 +1,5 @@
 /* Overall page background */
-body{
+body,html{
   background-color: #14213D; 
 }
 .login-container {

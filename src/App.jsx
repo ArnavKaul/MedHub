@@ -14,6 +14,8 @@ import { CartProvider } from "react-use-cart";
 import Cart from "./cart";
 import Chat from "./chat";
 import Checkout from "./checkout";
+import Payment from "./payment";
+import Receipt from "./receipt";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<CartProvider>
@@ -30,6 +32,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 				<Route path="/checkout" element={<Checkout />} />
 				<Route path="/cart" element={<Cart />} />
 				<Route path="/chat" element={<Chat />} />
+				<Route path="/payment" element={<Payment />} />
+				<Route path="/receipt" element={<Receipt />} />
+				
 			</Routes>
 		</Router>
 	</CartProvider>
